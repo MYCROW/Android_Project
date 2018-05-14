@@ -3,6 +3,7 @@ package com.example.crow.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,13 +11,15 @@ import android.widget.Button;
 
 import static android.content.ContentValues.TAG;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity
+        implements FragmentTest.OnFragmentInteractionListener{
     private Button bt1,bt2;
     static  int index = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setContentView(R.layout.fragment_fragment_test);
         index++;
         Log.i(TAG,MainActivity.class+"Called onCreate "+index);
         bt1 = (Button)findViewById(R.id.button1);
@@ -38,7 +41,6 @@ public class MainActivity extends Activity {
                 startActivity(it);
             }
         });
-
 
     }
     @Override
@@ -70,6 +72,10 @@ public class MainActivity extends Activity {
     protected void onRestart() {
         super.onRestart();
         Log.i(TAG,MainActivity.class+"Called onRestart "+index);
+    }
+
+    public void onFragmentInteraction(Uri uri){
+        //you can leave it empty
     }
 
 }
